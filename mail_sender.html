@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+	<title></title>
+</head>
+<body>
+	<form>
+		<input name="name" placeholder="your name"><br>
+		<input name="email" placeholder="your email address"><br>
+		<input name="subject" placeholder="Subject"><br>
+		<textarea name="body">
+Your message
+		</textarea><br>
+	</form>
+	<button>Send Mail</button>
+</body>
+<script>
+$(document).ready(function(){
+	addClick();
+});
+function addClick(){
+	$('button').click(function(){
+		$.ajax({
+			method:'post',
+			url:'mail_handler.php',
+			data : {
+				name : $('input[name="name"]').val(),
+				email : $('input[name="email"]').val(),
+				subject : $('input[name="subject"]').val(),
+				body : $('textarea').val()
+			},
+			success: function(response){
+				console.log(response)
+			},
+			error : function(response){
+				console.log(response,'your ajax failed');
+			}
+		})
+
+	})
+}
+</script>
+</html>
+
