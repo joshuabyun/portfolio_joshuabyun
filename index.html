@@ -216,13 +216,14 @@
 				$.ajax({
 					method:'post',
 					url:'mail_handler.php',
+					type:'json',
 					data : {
 						name : $('input[name="name"]').val(),
 						email : $('input[name="email"]').val(),
 						body : $('textarea[name="body"]').val()
 					},
 					success: function(response){
-						console.log(response)
+						console.log("hello response",response)
 					},
 					error : function(response){
 						console.log(response,'your ajax failed');
@@ -232,6 +233,5 @@
 			})
 		}
 	</script>
-
 </html>
 
