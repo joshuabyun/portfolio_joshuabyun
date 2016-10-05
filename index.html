@@ -7,6 +7,7 @@
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
 	</head>
 	<style>
 		#header{
@@ -161,11 +162,11 @@
 									<div class="row uniform 50%">
 										<div class="6u 12u$(xsmall)"><input type="text" name="name" id="name" placeholder="Name" /></div>
 										<div class="6u$ 12u$(xsmall)"><input type="email" name="email" id="email" placeholder="Email" /></div>
-										<div class="12u$"><textarea name="message" id="message" placeholder="Message" rows="4"></textarea></div>
+										<div class="12u$"><textarea name="body" id="message" placeholder="Message" rows="4"></textarea></div>
 									</div>
 								</form>
 								<ul class="actions">
-									<li><input type="submit" value="Send Message" /></li>
+									<li><input name="send" type="submit" value="Send Message" /></li>
 								</ul>
 							</div>
 							<div class="4u$ 12u$(small)">
@@ -203,5 +204,34 @@
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
 	</body>
+	<script>
+		$(document).ready(function(){
+			addClick();
+		});
+		function addClick(){
+			$('input[name="send"]').click(function(){
+				console.log($('textarea[name="body"]').val());
+				console.log($('input[name="name"]').val());
+				console.log($('input[name="email"]').val());
+				$.ajax({
+					method:'post',
+					url:'mail_handler.php',
+					data : {
+						name : $('input[name="name"]').val(),
+						email : $('input[name="email"]').val(),
+						body : $('textarea[name="body"]').val()
+					},
+					success: function(response){
+						console.log(response)
+					},
+					error : function(response){
+						console.log(response,'your ajax failed');
+					}
+				})
+
+			})
+		}
+	</script>
+
 </html>
 

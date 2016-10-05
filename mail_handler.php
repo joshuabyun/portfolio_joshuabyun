@@ -33,7 +33,7 @@ $mail->addReplyTo($_POST["email"]); /*email address of the person sending the me
 //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
 $mail->isHTML(true);                                  // Set email format to HTML
 
-$mail->Subject = $_POST['subject'];
+//$mail->Subject = $_POST['subject'];
 $mail->Body    = $_POST['body'];
 $mail->AltBody = htmlentities($_POST['body']);
 
