@@ -11,7 +11,10 @@
 	</head>
 	<style>
 		#header{
-			background-image: url('images/bg.jpg');
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-image: url('images/sf.png');
+			background-color: #000000;
 		}
 		#header .image.avatar{
 			width:11em;
@@ -19,9 +22,12 @@
 		#header strong, #header b{
 			font-size: 1.5em;
 		}
+		.headerInfo{
+			text-shadow: 2px 2px black;
+		}
 		@media screen and (max-width: 980px){
 			#footer {
-				background-image: url('images/bg.jpg');
+				background-image: url('images/bg.jpg'), url('assets/css/images/overlay.png');
 			}
 		}
 		.image.thumb:hover:before {
@@ -33,9 +39,6 @@
 		.image:before {
 			 background: none;
 		}
-		h5 a{
-			border: none;
-		}
 		a{
 			border: none;
 		}
@@ -45,9 +48,9 @@
 			<header id="header">
 				<div class="inner">
 					<img src="images/joshuaByun.png" alt="cannot load image" class="image avatar"/>
-					<h1><strong>JOSHUA BYUN</strong></h1>
-					<h1>Web Developer</h1>
-					<h1>Greater LA & Orange&nbspCounty</h1>
+					<h1 class="headerInfo"><strong>JOSHUA BYUN</strong></h1>
+					<h5 class="headerInfo"><strong>Web Developer</strong></h5>
+					<h5 class="headerInfo"><strong>Greater LA & Orange&nbspCounty</strong></h5>
 				</div>
 			</header>
 		<!-- Main -->
@@ -74,21 +77,21 @@
 							<article class="6u 12u$(xsmall) work-item">
 								<img src="images/portfoliopic/resizedmemoryMatchPlay1.PNG" class="image fit thumb" alt="" />
 								<h3>MEMORY MATCH</h3>
-								<h5><a href="" target="_blank">GitHub <span class="icon fa-github"></span></a>||<a href="../memory_match/index.html" target="_blank">Live Demo</a></h5>
+								<h5><a href="" target="_blank">GitHub <span class="icon fa-github"></span></a>||<a href="../portfolioProjects/memoryMatch/index.html" target="_blank">Live Demo</a></h5>
 								<p>Single & multi-player matching game written in OOP.</p>
 								<p>Technology: JavaScript, jQuery, HTML, CSS</p>
 							</article>
 							<article class="6u$ 12u$(xsmall) work-item">
 								<img src="images/portfoliopic/resizedcalc.PNG" class="image fit thumb" alt="cannot load image"/>
 								<h3>CALCULATOR </h3>
-								<h5><a href="" target="_blank">GitHub <span class="icon fa-github"></span></a>||<a href="../calculator/index.html" target="_blank">Live Demo</a></h5>
+								<h5><a href="" target="_blank">GitHub <span class="icon fa-github"></span></a>||<a href="../portfolioProjects/calc/index.html" target="_blank">Live Demo</a></h5>
 								<p>Fully functioning standard calculator written in Angular.</p>
 								<p>Technology: Angular JS, JavaScript, jQuery, HTML, CSS</p>
 							</article>
 							<article class="6u 12u$(xsmall) work-item">
 								<img src="images/portfoliopic/resizedsgt.PNG" class="image fit thumb" alt="cannot load image"/>
 								<h3>STUDENT GRADE TABLE</h3>
-								<h5><a href="" target="_blank">GitHub <span class="icon fa-github"></span></a>||<a href="http://localhost:8888/lfz/student_grade_table/" target="_blank">Live Demo</a></h5>
+								<h5><a href="" target="_blank">GitHub <span class="icon fa-github"></span></a>||<a href="http://localhost:8888/lfz/portfolioProjects/studentGradeTable/index.html" target="_blank">Live Demo</a></h5>
 								<p>A Content Management System (CMS), that provides <br>
 									instant CRUD services. (Create, Read, Update, Delete)</p>
 								<p>Technology: PHP, MySQL, JS, jQuery, HTML, CSS, Bootstrap</p>
@@ -103,7 +106,7 @@
 							<article class="6u 12u$(xsmall) work-item">
 								<img src="images/portfoliopic/resizedTictactoe.PNG" class="image fit thumb" alt="cannot load image"/>
 								<h3>Tic Tac Toe</h3>
-								<h5><a href="" target="_blank">GitHub <span class="icon fa-github"></span></a>||<a href="../tictactoe/index.html" target="_blank">Live Demo</a></h5>
+								<h5><a href="" target="_blank">GitHub <span class="icon fa-github"></span></a>||<a href="../portfolioProjects/tictactoe/index.html" target="_blank">Live Demo</a></h5>
 								<p>A superhero themed tic tac toe</p>
 								<p>Technology: JavaScript, jQuery, HTML5, CSS3</p>
 							</article>
