@@ -42,6 +42,14 @@
 		a{
 			border: none;
 		}
+		#thankyou{
+			color:black;
+			font-weight: bold;
+		}
+		#errorMsg{
+			color:red;
+			font-weight: bold;
+		}
 		@media (max-width: 736px) {
 			#loading{
 				float: right;
@@ -219,9 +227,11 @@
 		});
 		function addClick(){
 			$('input[name="send"]').click(function(){
-				console.log($('textarea[name="body"]').val());
-				console.log($('input[name="name"]').val());
-				console.log($('input[name="email"]').val());
+				removeThankyou();
+				removeErrorMsg();
+//				console.log($('textarea[name="body"]').val());
+//				console.log($('input[name="name"]').val());
+//				console.log($('input[name="email"]').val());
 				if($('textarea[name="body"]').val() ==''|| $('input[name="name"]').val() == ""||$('input[name="email"]').val()== ""){
 					alert("Please input all 3 information");
 					clearInputs();
@@ -241,20 +251,23 @@
 						var stringResponse = response.substring(4);
 						console.log(stringResponse);
 						if(stringResponse == "success"){
-							removeSendingGif();
+							removeMsg();
 							clearInputs();
-							alert("message sent");
+							addThankyou();
+							setTimeout(removeThankyou,2000);
 						}else{
-							removeSendingGif();
+							removeMsg();
 							clearInputs();
-							alert("message failed to send");
+							addErrorMsg();
+							setTimeout(removeErrorMsg,2000);
 						}
 					},
 					error : function(response){
 						console.log(response,'your ajax failed');
-						removeSendingGif();
+						removeMsg();
 						clearInputs();
-						alert("message failed to send");
+						addErrorMsg();
+						setTimeout(removeErrorMsg,2000);
 					}
 				})
 			})
@@ -268,8 +281,22 @@
 			var imageDiv = $('<div id="loading">').html("<img src='sending.gif'>");
 			$('#sendingGifContainer').append(imageDiv);
 		}
-		function removeSendingGif(){
+		function addThankyou(){
+			var thankYouDiv = $('<div id="thankyou">').html("Thank You. <br> Message has been sent.");
+			$('#sendingGifContainer').append(thankYouDiv);
+		}
+		function addErrorMsg(){
+			var errorMsg = $('<div id="errorMsg">').text("Message was not successful");
+			$('#sendingGifContainer').append(errorMsg);
+		}
+		function removeThankyou(){
+			$('#thankyou').remove();
+		}
+		function removeMsg(){
 			$('#loading').remove();
+		}
+		function removeErrorMsg(){
+			$('#errorMsg').remove();
 		}
 	</script>
 </html>
