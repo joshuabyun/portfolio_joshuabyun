@@ -42,6 +42,12 @@
 		a{
 			border: none;
 		}
+		@media (max-width: 736px) {
+			#loading{
+				float: right;
+				transform: translate(0,-110%);
+			}
+		}
 	</style>
 	<body id="top">
 		<!-- Header -->
@@ -172,7 +178,7 @@
 									<li><input name="send" type="submit" value="Send Message" /></li>
 								</ul>
 							</div>
-							<div class="4u$ 12u$(small)">
+							<div class="4u$ 12u$(small)" id="sendingGifContainer">
 								<ul class="labeled-icons">
 									<li>
 										<h3 class="icon fa-linkedin"><span class="label">LinkedIn</span></h3>
@@ -216,6 +222,12 @@
 				console.log($('textarea[name="body"]').val());
 				console.log($('input[name="name"]').val());
 				console.log($('input[name="email"]').val());
+				if($('textarea[name="body"]').val() ==''|| $('input[name="name"]').val() == ""||$('input[name="email"]').val()== ""){
+					alert("Please input all 3 information");
+					clearInputs();
+					return;
+				}
+				addSendingGif();
 				$.ajax({
 					method:'post',
 					url:'mail_handler.php',
@@ -226,14 +238,38 @@
 						body : $('textarea[name="body"]').val()
 					},
 					success: function(response){
-						console.log("hello response",response)
+						var stringResponse = response.substring(4);
+						console.log(stringResponse);
+						if(stringResponse == "success"){
+							removeSendingGif();
+							clearInputs();
+							alert("message sent");
+						}else{
+							removeSendingGif();
+							clearInputs();
+							alert("message failed to send");
+						}
 					},
 					error : function(response){
 						console.log(response,'your ajax failed');
+						removeSendingGif();
+						clearInputs();
+						alert("message failed to send");
 					}
 				})
-
 			})
+		}
+		function clearInputs(){
+			$('#name').val("");
+			$('#email').val("");
+			$('#message').val("");
+		}
+		function addSendingGif(){
+			var imageDiv = $('<div id="loading">').html("<img src='sending.gif'>");
+			$('#sendingGifContainer').append(imageDiv);
+		}
+		function removeSendingGif(){
+			$('#loading').remove();
 		}
 	</script>
 </html>
