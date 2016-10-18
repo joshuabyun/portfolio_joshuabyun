@@ -248,7 +248,8 @@
 						body : $('textarea[name="body"]').val()
 					},
 					success: function(response){
-						var stringResponse = response.substring(4);
+						//var stringResponse = response.substring(4);
+						var stringResponse = response;
 						console.log(stringResponse);
 						if(stringResponse == "success"){
 							removeMsg();
