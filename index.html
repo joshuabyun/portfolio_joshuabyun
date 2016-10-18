@@ -42,6 +42,23 @@
 		a{
 			border: none;
 		}
+		#loading{
+			width: 100%;
+			/*position: absolute;*/
+		}
+		#loading > img{
+			width:100%;
+		}
+		@media (max-width: 736px) {
+			#loading{
+				position: absolute;
+				width: 30%;
+				right:0;
+			}
+			/*#loadingSibling{*/
+				/*display: inline-block;*/
+			/*}*/
+		}
 	</style>
 	<body id="top">
 		<!-- Header -->
@@ -165,7 +182,7 @@
 									<div class="row uniform 50%">
 										<div class="6u 12u$(xsmall)"><input type="text" name="name" id="name" placeholder="Name" /></div>
 										<div class="6u$ 12u$(xsmall)"><input type="email" name="email" id="email" placeholder="Email" /></div>
-										<div class="12u$"><textarea name="body" id="message" placeholder="Message" rows="4"></textarea></div>
+										<div class="12u$"><textarea name="body" id="message" placeholder="Message" rows="4">	</textarea></div>
 									</div>
 								</form>
 								<ul class="actions">
@@ -173,7 +190,7 @@
 								</ul>
 							</div>
 							<div class="4u$ 12u$(small)">
-								<ul class="labeled-icons">
+								<ul class="labeled-icons" id="loadingSibling">
 									<li>
 										<h3 class="icon fa-linkedin"><span class="label">LinkedIn</span></h3>
 										<a href="https://www.linkedin.com/in/joshua-byun" target="_blank">linkedin.com/in/joshua-byun</a>
@@ -183,7 +200,8 @@
 										<a href="https://github.com/joshuabyun" target="_blank">github.com/joshuabyun</a>
 									</li>
 								</ul>
-							</div>
+								<!--<div id="loading"><img src="loading.gif"></div>-->
+							</di	v>
 						</div>
 					</section>
 			</div>
@@ -226,10 +244,12 @@
 						body : $('textarea[name="body"]').val()
 					},
 					success: function(response){
-						console.log("hello response",response)
+						console.log(response.substring(4));
+
 					},
 					error : function(response){
 						console.log(response,'your ajax failed');
+
 					}
 				})
 
